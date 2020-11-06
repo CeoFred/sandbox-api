@@ -1,12 +1,12 @@
-'use strict'
+'use strict';
 
 /** @type {import('@adonisjs/framework/src/Env')} */
-const Env = use('Env')
+const Env = use('Env');
 
 /** @type {import('@adonisjs/ignitor/src/Helpers')} */
-const Helpers = use('Helpers')
-const Url = use('url-parse')
-const CLEARDB_DATABASE_URL = new Url(Env.get('CLEARDB_DATABASE_URL'))
+const Helpers = use('Helpers');
+const Url = use('url-parse');
+const CLEARDB_DATABASE_URL = new Url(Env.get('CLEARDB_DATABASE_URL'));
 module.exports = {
   /*
   |--------------------------------------------------------------------------
@@ -33,10 +33,10 @@ module.exports = {
   sqlite: {
     client: 'sqlite3',
     connection: {
-      filename: Helpers.databasePath(`${Env.get('DB_DATABASE', 'development')}.sqlite`)
+      filename: Helpers.databasePath(`${Env.get('DB_DATABASE', 'development')}.sqlite`),
     },
     useNullAsDefault: true,
-    debug: Env.get('DB_DEBUG', false)
+    debug: Env.get('DB_DEBUG', false),
   },
 
   /*
@@ -51,14 +51,14 @@ module.exports = {
   */
   mysql: {
     client: 'mysql',
-      connection: {
-    host: Env.get('DB_HOST', CLEARDB_DATABASE_URL.host),
-    port: Env.get('DB_PORT', ''),
-    user: Env.get('DB_USER', CLEARDB_DATABASE_URL.username),
-    password: Env.get('DB_PASSWORD', CLEARDB_DATABASE_URL.password),
-    database: Env.get('DB_DATABASE', CLEARDB_DATABASE_URL.pathname.substr(1))
-  },
-    debug: Env.get('DB_DEBUG', false)
+    connection: {
+      host: Env.get('DB_HOST', CLEARDB_DATABASE_URL.host),
+      port: Env.get('DB_PORT', ''),
+      user: Env.get('DB_USER', CLEARDB_DATABASE_URL.username),
+      password: Env.get('DB_PASSWORD', CLEARDB_DATABASE_URL.password),
+      database: Env.get('DB_DATABASE', CLEARDB_DATABASE_URL.pathname.substr(1)),
+    },
+    debug: Env.get('DB_DEBUG', false),
   },
 
   /*
@@ -78,8 +78,8 @@ module.exports = {
       port: Env.get('DB_PORT', ''),
       user: Env.get('DB_USER', 'root'),
       password: Env.get('DB_PASSWORD', ''),
-      database: Env.get('DB_DATABASE', 'adonis')
+      database: Env.get('DB_DATABASE', 'adonis'),
     },
-    debug: Env.get('DB_DEBUG', false)
-  }
-}
+    debug: Env.get('DB_DEBUG', false),
+  },
+};
