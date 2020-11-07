@@ -19,12 +19,19 @@ class Authentication {
     // call next to advance the request
     let token = request.header('Authorization');
     const userkid = request.post('kid');
+    if (!token) {
+      return await next();
+    }
+    token = token.replace('Bearer', '').trim();
 
-    if (token) {
+    Logger.notice(token);
+
+    if (token !== 'null') {
       try {
-        token = token.replace('Bearer', '').trim();
         const data = JSON.stringify({'kid': userkid.kid});
-
+        if (!userkid.kid) {
+          return response.status(401).send({message: 'Authentication Params Incomplete'});
+        }
         const config = {
           method: 'post',
           url: 'https://api.secure.codemarka.dev/api/v1/auth/user/token/verify',
