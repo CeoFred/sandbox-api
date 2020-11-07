@@ -19,7 +19,12 @@ class Authentication {
     // call next to advance the request
     let token = request.header('Authorization');
     const userkid = request.post('kid');
+    if (!token) {
+      return await next();
+    }
     token = token.replace('Bearer', '').trim();
+
+    Logger.notice(token);
 
     if (token !== 'null') {
       try {
