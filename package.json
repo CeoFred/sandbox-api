@@ -34,7 +34,8 @@
   "devDependencies": {
     "eslint": "^7.12.1",
     "eslint-config-google": "^0.14.0",
-    "husky": "^4.3.0"
+    "husky": "^4.3.0",
+    "jsdoc": "^3.6.6"
   },
   "autoload": {
     "App": "./app"

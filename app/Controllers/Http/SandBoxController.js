@@ -26,7 +26,7 @@ class SandBoxController {
 
   /**
    * API to be used for creating a new sandbox.
-   * POST sandboxe/create
+   * POST api/v1/sandbox/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
