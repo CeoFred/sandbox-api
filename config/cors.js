@@ -62,7 +62,7 @@ module.exports = {
   | Array - An array of allowed headers
   |
   */
-  exposeHeaders: false,
+  exposeHeaders: ['Access-Control-Allow-Origin', 'Access-Control-Allow-Methods', 'Access-Control-Allow-Headers', 'Content-Type'],
 
   /*
   |--------------------------------------------------------------------------
