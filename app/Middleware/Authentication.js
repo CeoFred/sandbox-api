@@ -24,7 +24,9 @@ class Authentication {
     if (token !== 'null') {
       try {
         const data = JSON.stringify({'kid': userkid.kid});
-
+        if (!userkid.kid) {
+          return response.status(401).send({message: 'Authentication Params Incomplete'});
+        }
         const config = {
           method: 'post',
           url: 'https://api.secure.codemarka.dev/api/v1/auth/user/token/verify',
