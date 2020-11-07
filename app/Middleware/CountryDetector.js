@@ -14,7 +14,9 @@ class CountryDetector {
   async handle({request}, next) {
     // call next to advance the request
     const ip = request.ip();
-    request.country = ip === '127.0.0.1' ? 'Localhost' : geoip.lookup(ip).country;
+    const data = geoip.lookup(ip);
+    // eslint-disable-next-line max-len
+    if (data) request.country = data.country;
     await next();
   }
 }

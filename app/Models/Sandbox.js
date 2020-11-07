@@ -9,7 +9,7 @@ class Sandbox extends Model {
   }
 
   static get visible() {
-    return ['sid', 'status', 'likes', 'visits'];
+    return ['sid', 'status', 'likes', 'visits', 'user', 'id'];
   }
 }
 

@@ -50,10 +50,10 @@ class SandBoxController {
     sandbox.visits = 0;
     sandbox.likes = 0;
     sandbox.status = 0;
+    sandbox.user = request.user ? request.user.kid : null;
 
     try {
       await sandbox.save();
-      console.log(sandbox);
       return response.status(201).send({id: sandbox.sid, message: 'created'});
     } catch (error) {
       Logger.error(error);
