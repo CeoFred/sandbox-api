@@ -50,8 +50,7 @@ class SandBoxController {
     sandbox.visits = 0;
     sandbox.likes = 0;
     sandbox.sandbox_status = 0;
-    sandbox.user_id = request.user ? request.user.kid : null;
-
+    sandbox.user_id = request.body.user ? request.body.user.data.kid : null;
     try {
       await sandbox.save();
       return response.status(201).send({id: sandbox.sid, message: 'created'});
