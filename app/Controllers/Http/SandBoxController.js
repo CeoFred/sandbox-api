@@ -49,8 +49,8 @@ class SandBoxController {
     sandbox.sid = sid;
     sandbox.visits = 0;
     sandbox.likes = 0;
-    sandbox.status = 0;
-    sandbox.user = request.user ? request.user.kid : null;
+    sandbox.sandbox_status = 0;
+    sandbox.user_id = request.user ? request.user.kid : null;
 
     try {
       await sandbox.save();
