@@ -5,14 +5,15 @@ const Schema = use('Schema');
 
 class SandboxSchema extends Schema {
   up() {
+    this.dropIfExists('sandboxes');
     this.create('sandboxes', (table) => {
       table.increments();
       table.timestamps();
-      table.string('sid');
-      table.string('user');
-      table.bigInteger('status');
-      table.bigInteger('visits');
-      table.bigInteger('likes');
+      table.string('sid').unique();
+      table.string('user_id').nullable().defaultTo(null);
+      table.bigInteger('sandbox_status').defaultTo(0);
+      table.bigInteger('visits').defaultTo(0);
+      table.bigInteger('likes').defaultTo(0);
     });
   }
 
