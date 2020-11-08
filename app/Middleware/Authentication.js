@@ -24,8 +24,6 @@ class Authentication {
     }
     token = token.replace('Bearer', '').trim();
 
-    Logger.notice(token);
-
     if (token !== 'null') {
       try {
         const data = JSON.stringify({'kid': userkid.kid});
@@ -43,14 +41,14 @@ class Authentication {
         };
 
         const user = await axios(config);
-        request.user = user.data;
+        request.body.user = user.data;
         await next();
       } catch (error) {
         Logger.error(error);
         return response.status(401).send({message: 'Something went wrong', status: 401});
       }
     } else {
-      await next();
+      // await next();
     }
   }
 }
